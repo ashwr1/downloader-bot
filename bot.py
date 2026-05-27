@@ -1,7 +1,6 @@
 import telebot
 import requests
 import re
-import os
 
 # ⚠️ ضع توكن البوت الخاص بك هنا
 BOT_TOKEN = "8784566055:AAG-zPhJQ0NgR3HVMG61cjm-pK2BytnY1Xw"
@@ -22,6 +21,7 @@ def download_video(message):
     url = url_match.group(0)
     status_msg = bot.reply_to(message, "جاري سحب الفيديو... ⏳")
 
+    # الوسيط الأول للتيك توك
     api_url = f"https://api.tiklydown.eu.org/api/download?url={url}"
 
     try:
@@ -34,7 +34,7 @@ def download_video(message):
     except:
         pass
 
-    # وسيط احتياطي للمواقع الأخرى
+    # الوسيط الثاني لإنستغرام وباقي المواقع
     try:
         generic_api = "https://co.wuk.sh/api/json"
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
